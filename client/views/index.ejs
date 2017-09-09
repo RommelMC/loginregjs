@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Registration</title>
+</head>
+<body>
+    <%if(typeof(exists)!='undefined'){%>
+        <p>Invalid email/password</p>
+    <%}%>
+    <% if(typeof(errors) != 'undefined'){ %>
+        <%if(errors.code == 11000){%>
+            <p>Email has already been used</p>
+        <%}%>
+        <%for(var x in errors.errors){%>
+            <p><%=errors.errors[x].message%></p>
+        <%}%>
+    <%}%>
+    <fieldset>
+        <legend>Login</legend>
+        <form action="/login" method='post'>
+            <div><label for="">Email: <input type="text" name='email'></label></div>
+            <div><label for="">Password: <input type="password" name='password'></label></div>
+            <input type="submit" value='Login'>
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>Registration</legend>
+        <form action="/register" method='post'>
+            <div><label for="">Email: <input type="text" name='email'></label></div>
+            <div><label for="">First name: <input type="text" name='firstName'></label></div>
+            <div><label for="">Last name: <input type="text" name='lastName'></label></div>
+            <div><label for="">Password: <input type="password" name='password'></label></div>
+            <div><label for="">Confirm password: <input type="password" name='cpassword'></label></div>
+            <div><label for="">Birthday<input type="date" name='birthday'></label></div>
+            <input type="submit" value='Register'>
+        </form>
+    </fieldset>
+</body>
+</html>
